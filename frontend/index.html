@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+   
+</head>
+<body ng-app="fitnessApp" ng-controller="FitnessController">
+    <div class="container">
+        <h1>🚀 Fitness Tracker</h1>
+        <p>Track your fitness with AI-based recommendations and gamification!</p>
+
+        <div class="weather-section card">
+            <h2>🌤 Weather-Based Activity Suggestion</h2>
+            <input type="text" ng-model="city" placeholder="Enter city" class="input-field"/>
+            <button class="btn" ng-click="getWeather()">Get Weather</button>
+            <p ng-if="weather">🌡 Temperature: {{weather.temp}}°C</p>
+            <p ng-if="weather">💧 Humidity: {{weather.humidity}}%</p>
+            <p ng-if="weather">🔥 Suggested Workout: {{workoutSuggestion}}</p>
+        </div>
+
+        <div class="fitness-section card">
+            <h2>🚶‍♂️ Daily Step Tracker</h2>
+            <label>Steps Walked:</label>
+            <input type="number" ng-model="steps" class="input-field"/>
+            <button class="btn" ng-click="saveSteps()">Save</button>
+            <p>Today's Steps: {{steps}}</p>
+        </div>
+
+        <div class="hydration-section card">
+            <h2>💧 Hydration Tracker</h2>
+            <p>Water Intake: {{waterIntake}} L</p>
+            <button class="btn" ng-click="addWater()">Drink 250ml</button>
+        </div>
+
+        <div class="calorie-section card">
+            <h2>🔥 Calorie Counter</h2>
+            <label>Calories Consumed:</label>
+            <input type="number" ng-model="calories" class="input-field"/>
+            <button class="btn" ng-click="saveCalories()">Save</button>
+            <p>Total Calories: {{calories}}</p>
+        </div>
+
+        <div class="sleep-section card">
+            <h2>🌙 Sleep Tracker</h2>
+            <label>Hours Slept:</label>
+            <input type="number" ng-model="sleepHours" class="input-field"/>
+            <button class="btn" ng-click="saveSleep()">Save</button>
+            <p>Total Sleep: {{sleepHours}} hours</p>
+        </div>
+
+        <div class="history-section card">
+            <h2>📜 Fitness History</h2>
+            <ul>
+                <li ng-repeat="entry in history">📅 {{entry.date}} - Steps: {{entry.steps}}, Water: {{entry.water}}, Calories: {{entry.calories}}, Sleep: {{entry.sleepHours}} hours</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

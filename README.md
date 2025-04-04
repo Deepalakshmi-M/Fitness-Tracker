@@ -15,7 +15,7 @@ npm install express cors axios
 
 node server.js
 
-🌐 Step 3: Setup the Frontend
+ Setup the Frontend
 
 cd ../frontend
 
